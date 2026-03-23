@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+chat-backend-context.jsonl
+AGENTS.md
+CLAUDE.md
