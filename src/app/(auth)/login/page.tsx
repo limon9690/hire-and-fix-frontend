@@ -1,11 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,10 +18,10 @@ import { login } from "@/lib/auth/auth-api";
 import { getDashboardPathByRole } from "@/lib/auth/redirect-by-role";
 import { loginSchema, type LoginPayload } from "@/lib/auth/schemas";
 import { getSession } from "@/lib/auth/session";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [submitError, setSubmitError] = useState<string | null>(null);
   const form = useForm<LoginPayload>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -34,19 +31,22 @@ export default function LoginPage() {
   });
 
   const onSubmit = async (values: LoginPayload) => {
-    setSubmitError(null);
     try {
       await login(values);
       const session = await getSession();
 
       if (!session.isAuthenticated || !session.user) {
-        setSubmitError("Login succeeded but session could not be loaded.");
+        toast.error("Login succeeded but session could not be loaded.");
         return;
       }
 
-      router.push(getDashboardPathByRole(session.user.role));
+      toast.success("Login successful");
+      const role = session.user.role;
+      setTimeout(() => {
+        router.push(getDashboardPathByRole(role));
+      }, 500);
     } catch (error) {
-      setSubmitError(getApiErrorMessage(error, "Failed to login"));
+      toast.error(getApiErrorMessage(error, "Failed to login"));
     }
   };
 
@@ -93,14 +93,6 @@ export default function LoginPage() {
               </p>
             ) : null}
           </div>
-
-          {submitError ? (
-            <Alert variant="destructive">
-              <AlertCircle />
-              <AlertTitle>Login failed</AlertTitle>
-              <AlertDescription>{submitError}</AlertDescription>
-            </Alert>
-          ) : null}
 
           <Button
             type="submit"
