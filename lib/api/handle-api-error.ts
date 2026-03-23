@@ -1,0 +1,16 @@
+import { ApiError } from "./types";
+
+export const getApiErrorMessage = (
+  error: unknown,
+  fallback = "Something went wrong"
+) => {
+  if (error instanceof ApiError) {
+    return error.message;
+  }
+
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return fallback;
+};
