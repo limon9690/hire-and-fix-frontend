@@ -1,7 +1,4 @@
-"use client";
-
-import Link from "next/link";
-import { Input } from "@/components/ui/input";
+import { ListFiltersBar } from "@/components/shared/list/list-filters-bar";
 import type { ServiceCategory } from "@/lib/public/service-categories";
 
 export const SORT_OPTIONS = [
@@ -26,76 +23,42 @@ export function ServicesSearch({
   initialSort,
   categories,
 }: ServicesSearchProps) {
+  const categoryOptions = [
+    { value: "", label: "All categories" },
+    ...categories.map((category) => ({
+      value: category.id,
+      label: category.name,
+    })),
+  ];
+
   return (
-    <form
+    <ListFiltersBar
       action="/services"
-      method="get"
-      className="rounded-xl border border-border bg-card p-4"
-    >
-      <div className="grid gap-3 sm:grid-cols-[1fr_220px_220px_auto_auto] sm:items-end">
-        <label className="space-y-2">
-          <span className="text-xs font-medium text-muted-foreground">
-            Search professionals
-          </span>
-          <Input
-            type="search"
-            name="searchTerm"
-            defaultValue={initialSearchTerm}
-            placeholder="Search by name, category, or keyword"
-            className="h-9"
-          />
-        </label>
-
-        <label className="space-y-2">
-          <span className="text-xs font-medium text-muted-foreground">
-            Category
-          </span>
-          <select
-            name="serviceCategoryId"
-            defaultValue={initialServiceCategoryId}
-            className="h-9 w-full rounded-lg border border-input bg-background px-2 text-sm text-foreground outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50"
-          >
-            <option value="">All categories</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label className="space-y-2">
-          <span className="text-xs font-medium text-muted-foreground">Sort</span>
-          <select
-            name="sort"
-            defaultValue={initialSort}
-            className="h-9 w-full rounded-lg border border-input bg-background px-2 text-sm text-foreground outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50"
-          >
-            {SORT_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <div>
-          <button
-            type="submit"
-            className="inline-flex h-9 w-full items-center justify-center rounded-lg border border-border bg-background px-3 text-sm font-medium text-foreground transition-colors hover:bg-muted sm:w-auto cursor-pointer"
-          >
-            Search
-          </button>
-        </div>
-        <div>
-          <Link
-            href="/services"
-            className="inline-flex h-9 w-full items-center justify-center rounded-lg border border-border bg-background px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:w-auto"
-          >
-            Clear filters
-          </Link>
-        </div>
-      </div>
-    </form>
+      resetHref="/services"
+      hiddenFields={[{ name: "page", value: "1" }]}
+      searchField={{
+        name: "searchTerm",
+        label: "Search professionals",
+        placeholder: "Search by name, category, or keyword",
+        defaultValue: initialSearchTerm,
+      }}
+      selectFields={[
+        {
+          name: "serviceCategoryId",
+          label: "Category",
+          defaultValue: initialServiceCategoryId,
+          options: categoryOptions,
+        },
+        {
+          name: "sort",
+          label: "Sort",
+          defaultValue: initialSort,
+          options: SORT_OPTIONS.map((option) => ({
+            value: option.value,
+            label: option.label,
+          })),
+        },
+      ]}
+    />
   );
 }

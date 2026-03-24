@@ -1,4 +1,5 @@
 import { EmployeesList } from "@/components/public/employees-list";
+import { ServicesPagination } from "@/components/public/services-pagination";
 import {
   ServicesSearch,
   type ServicesSortValue,
@@ -11,7 +12,16 @@ type ServicesPageProps = {
     searchTerm?: string;
     serviceCategoryId?: string;
     sort?: string;
+    page?: string;
   }>;
+};
+
+const parsePage = (value: string | undefined) => {
+  const parsed = Number.parseInt(value ?? "1", 10);
+  if (!Number.isFinite(parsed) || parsed < 1) {
+    return 1;
+  }
+  return parsed;
 };
 
 const parseSort = (value: string | undefined): ServicesSortValue => {
@@ -47,10 +57,18 @@ export default async function ServicesPage({ searchParams }: ServicesPageProps) 
   const searchTerm = params.searchTerm ?? "";
   const serviceCategoryId = params.serviceCategoryId ?? "";
   const sort = parseSort(params.sort);
+  const page = parsePage(params.page);
   const { sortBy, sortOrder } = getSortQuery(sort);
 
-  const [{ data: employees, error }, { data: categories }] = await Promise.all([
-    getEmployeesForCards({ searchTerm, serviceCategoryId, sortBy, sortOrder }),
+  const [{ data: employees, meta, error }, { data: categories }] = await Promise.all([
+    getEmployeesForCards({
+      searchTerm,
+      serviceCategoryId,
+      sortBy,
+      sortOrder,
+      page,
+      limit: 10,
+    }),
     getServiceCategories(),
   ]);
 
@@ -67,6 +85,13 @@ export default async function ServicesPage({ searchParams }: ServicesPageProps) 
         categories={categories}
       />
       <EmployeesList employees={employees} error={error} />
+      <ServicesPagination
+        page={meta.page}
+        totalPages={meta.totalPages}
+        searchTerm={searchTerm}
+        serviceCategoryId={serviceCategoryId}
+        sort={sort}
+      />
     </section>
   );
 }

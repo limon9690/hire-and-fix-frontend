@@ -8,6 +8,7 @@ export type ApiMeta = {
   limit?: number;
   total?: number;
   totalPage?: number;
+  totalPages?: number;
 };
 
 export type ApiSuccessResponse<T> = {
