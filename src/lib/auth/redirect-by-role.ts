@@ -3,13 +3,13 @@ import type { Role } from "./roles";
 export const getDashboardPathByRole = (role: Role) => {
   switch (role) {
     case "USER":
-      return "/dashboard/user";
+      return "/dashboard";
     case "VENDOR":
-      return "/dashboard/vendor";
+      return "/dashboard";
     case "EMPLOYEE":
-      return "/dashboard/employee";
+      return "/dashboard";
     case "ADMIN":
-      return "/dashboard/admin";
+      return "/dashboard";
     default:
       return "/unauthorized";
   }

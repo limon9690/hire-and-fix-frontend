@@ -13,12 +13,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { getApiErrorMessage } from "@/lib/api/handle-api-error";
-import { login } from "@/lib/auth/auth-api";
-import { getDashboardPathByRole } from "@/lib/auth/redirect-by-role";
 import { loginSchema, type LoginPayload } from "@/lib/auth/schemas";
-import { getSession } from "@/lib/auth/session";
 import { toast } from "sonner";
+import { loginAction } from "./_action";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,23 +28,16 @@ export default function LoginPage() {
   });
 
   const onSubmit = async (values: LoginPayload) => {
-    try {
-      await login(values);
-      const session = await getSession();
-
-      if (!session.isAuthenticated || !session.user) {
-        toast.error("Login succeeded but session could not be loaded.");
-        return;
-      }
-
-      toast.success("Login successful");
-      const role = session.user.role;
-      setTimeout(() => {
-        router.push(getDashboardPathByRole(role));
-      }, 500);
-    } catch (error) {
-      toast.error(getApiErrorMessage(error, "Failed to login"));
+    const result = await loginAction(values);
+    if (!result.success) {
+      toast.error(result.message);
+      return;
     }
+
+    toast.success("Login successful");
+    setTimeout(() => {
+      router.push(result.redirectTo);
+    }, 500);
   };
 
   return (
@@ -59,7 +49,12 @@ export default function LoginPage() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)} noValidate>
+        <form
+          method="post"
+          className="space-y-4"
+          onSubmit={form.handleSubmit(onSubmit)}
+          noValidate
+        >
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
