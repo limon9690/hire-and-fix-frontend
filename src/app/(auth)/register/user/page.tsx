@@ -119,6 +119,15 @@ export default function RegisterUserPage() {
               Login
             </Link>
           </p>
+          <p className="text-center text-sm text-muted-foreground">
+            Registering a business?{" "}
+            <Link
+              href="/register/vendor"
+              className="font-medium text-foreground underline"
+            >
+              Switch to vendor registration
+            </Link>
+          </p>
         </form>
       </CardContent>
     </Card>
