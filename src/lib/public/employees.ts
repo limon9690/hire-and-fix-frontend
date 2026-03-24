@@ -1,4 +1,5 @@
-import { apiFetchWithMeta } from "@/lib/api/client";
+import { apiFetch, apiFetchWithMeta } from "@/lib/api/client";
+import { ApiError } from "@/lib/api/types";
 
 export type EmployeeCardItem = {
   id: string;
@@ -14,6 +15,55 @@ export type EmployeeCardItem = {
   serviceCategory: {
     name: string | null;
   } | null;
+};
+
+export type EmployeeDetails = {
+  id: string;
+  profilePhoto: string | null;
+  bio: string | null;
+  address: string | null;
+  phone: string | null;
+  hourlyRate: string | null;
+  experienceYears: number | null;
+  isActive: boolean;
+  user: {
+    id: string;
+    name: string | null;
+    email: string;
+    role: string;
+  } | null;
+  vendor: {
+    id: string;
+    vendorName: string | null;
+    logo: string | null;
+    phone: string | null;
+    address: string | null;
+    isApproved: boolean;
+    isActive: boolean;
+  } | null;
+  serviceCategory: {
+    id: string;
+    name: string | null;
+    description: string | null;
+  } | null;
+};
+
+export type EmployeeReviewItem = {
+  id: string;
+  rating: number;
+  comment: string | null;
+  createdAt: string;
+  user: {
+    id: string;
+    name: string | null;
+    role: string;
+  } | null;
+};
+
+export type EmployeeReviews = {
+  averageRating: number;
+  totalReviews: number;
+  reviews: EmployeeReviewItem[];
 };
 
 type EmployeesMeta = {
@@ -107,5 +157,57 @@ export const getEmployeesForCards = async ({
         : "Unable to load professionals right now.";
 
     return { data: [], meta: fallbackMeta, error: message };
+  }
+};
+
+type EmployeeDetailsResult =
+  | { data: EmployeeDetails; error: null }
+  | { data: null; error: string; notFound?: boolean };
+
+export const getEmployeeById = async (
+  id: string
+): Promise<EmployeeDetailsResult> => {
+  try {
+    const data = await apiFetch<EmployeeDetails>(`/employees/${id}`, {
+      method: "GET",
+      cache: "no-store",
+    });
+
+    return { data, error: null };
+  } catch (error) {
+    if (error instanceof ApiError && error.statusCode === 404) {
+      return { data: null, error: "Professional not found", notFound: true };
+    }
+
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Unable to load professional details right now.";
+
+    return { data: null, error: message };
+  }
+};
+
+type EmployeeReviewsResult =
+  | { data: EmployeeReviews; error: null }
+  | { data: null; error: string };
+
+export const getEmployeeReviews = async (
+  employeeId: string
+): Promise<EmployeeReviewsResult> => {
+  try {
+    const data = await apiFetch<EmployeeReviews>(`/reviews/employee/${employeeId}`, {
+      method: "GET",
+      cache: "no-store",
+    });
+
+    return { data, error: null };
+  } catch (error) {
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Unable to load reviews right now.";
+
+    return { data: null, error: message };
   }
 };

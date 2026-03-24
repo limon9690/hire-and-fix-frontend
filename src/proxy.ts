@@ -10,9 +10,13 @@ export function proxy(request: NextRequest) {
   const claims = sessionToken ? getSessionClaimsFromToken(sessionToken) : null;
 
   const isAuthRoute = AUTH_ROUTES.has(pathname);
-  const isDashboardRoute = pathname === "/dashboard" || pathname.startsWith("/dashboard/");
+  const isProtectedRoute =
+    pathname === "/dashboard" ||
+    pathname.startsWith("/dashboard/") ||
+    pathname === "/bookings/new" ||
+    pathname.startsWith("/checkout/");
 
-  if (isDashboardRoute && !claims) {
+  if (isProtectedRoute && !claims) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
@@ -26,5 +30,12 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/register/:path*", "/dashboard", "/dashboard/:path*"],
+  matcher: [
+    "/login",
+    "/register/:path*",
+    "/dashboard",
+    "/dashboard/:path*",
+    "/bookings/new",
+    "/checkout/:path*",
+  ],
 };

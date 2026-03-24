@@ -36,10 +36,10 @@ export function EmployeeCard({ employee }: EmployeeCardProps) {
             <img
               src={employee.profilePhoto}
               alt={name}
-              className="h-16 w-16 rounded-full object-cover ring-1 ring-border"
+              className="h-20 w-20 rounded-full object-cover ring-1 ring-border"
             />
           ) : (
-            <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-base font-semibold text-primary ring-1 ring-border">
+            <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-lg font-semibold text-primary ring-1 ring-border">
               {getInitials(name) || "PR"}
             </div>
           )}
