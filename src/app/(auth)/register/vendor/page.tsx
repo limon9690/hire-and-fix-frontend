@@ -197,7 +197,7 @@ export default function RegisterVendorPage() {
 
           <Button
             type="submit"
-            className="w-full"
+            className="w-full cursor-pointer"
             disabled={form.formState.isSubmitting}
           >
             {form.formState.isSubmitting ? "Creating vendor account..." : "Create vendor account"}

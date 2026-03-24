@@ -71,6 +71,7 @@ export function ModeToggle({ align = "end" }: ModeToggleProps) {
       <Button
         type="button"
         variant="outline"
+        className="cursor-pointer"
         size="icon"
         onClick={() => setOpen((prev) => !prev)}
         aria-label={`Theme options, currently ${label}`}
@@ -91,7 +92,7 @@ export function ModeToggle({ align = "end" }: ModeToggleProps) {
         >
           <button
             type="button"
-            className="flex w-full items-center rounded-sm px-2 py-1.5 text-left text-sm hover:bg-muted"
+            className="flex w-full items-center rounded-sm px-2 py-1.5 text-left text-sm hover:bg-muted cursor-pointer"
             onClick={() => {
               setTheme("light");
               setOpen(false);
@@ -101,7 +102,7 @@ export function ModeToggle({ align = "end" }: ModeToggleProps) {
           </button>
           <button
             type="button"
-            className="flex w-full items-center rounded-sm px-2 py-1.5 text-left text-sm hover:bg-muted"
+            className="flex w-full items-center rounded-sm px-2 py-1.5 text-left text-sm hover:bg-muted cursor-pointer"
             onClick={() => {
               setTheme("dark");
               setOpen(false);
@@ -111,7 +112,7 @@ export function ModeToggle({ align = "end" }: ModeToggleProps) {
           </button>
           <button
             type="button"
-            className="flex w-full items-center rounded-sm px-2 py-1.5 text-left text-sm hover:bg-muted"
+            className="flex w-full items-center rounded-sm px-2 py-1.5 text-left text-sm hover:bg-muted cursor-pointer"
             onClick={() => {
               setTheme("system");
               setOpen(false);
