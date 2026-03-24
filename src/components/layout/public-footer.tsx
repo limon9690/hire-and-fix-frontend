@@ -5,7 +5,7 @@ export function PublicFooter() {
 
   return (
     <footer className="border-t border-border bg-gradient-to-b from-background to-muted/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
-      <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+      <div className="app-container py-10">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="space-y-3">
             <p className="text-lg font-semibold tracking-tight">Hire & Fix</p>
