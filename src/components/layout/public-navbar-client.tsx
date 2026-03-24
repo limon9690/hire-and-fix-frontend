@@ -12,7 +12,7 @@ type PublicNavbarClientProps = {
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/employees", label: "Browse Services" },
+  { href: "/services", label: "Browse Services" },
   { href: "/vendors", label: "Company Profiles" },
 ];
 

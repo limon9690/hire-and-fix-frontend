@@ -59,7 +59,7 @@ export function ServiceCategoriesCarousel({
               className="pl-3 sm:basis-1/2 md:pl-4 lg:basis-1/3"
             >
               <Link
-                href={`/employees?service=${encodeURIComponent(serviceSlug)}`}
+                href={`/services?service=${encodeURIComponent(serviceSlug)}`}
                 className="block h-full"
               >
                 <Card className="h-full border-border/80 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-sm">

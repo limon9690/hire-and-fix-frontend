@@ -32,7 +32,7 @@ export function HomeCta() {
 
         <div className="flex flex-col items-start gap-3 lg:items-end">
           <Link
-            href="/employees"
+            href="/services"
             className="inline-flex h-9 items-center justify-center rounded-lg border border-transparent bg-primary px-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/80"
           >
             Find Professionals

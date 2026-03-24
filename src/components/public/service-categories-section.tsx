@@ -21,7 +21,7 @@ export async function ServiceCategoriesSection() {
           </p>
         </div>
         <Link
-          href="/employees"
+          href="/services"
           className="hidden rounded-lg border border-border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
         >
           View all services
@@ -46,7 +46,7 @@ export async function ServiceCategoriesSection() {
 
       <div className="sm:hidden">
         <Link
-          href="/employees"
+          href="/services"
           className="inline-flex rounded-lg border border-border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           View all services

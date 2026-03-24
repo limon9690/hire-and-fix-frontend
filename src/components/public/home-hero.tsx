@@ -27,7 +27,7 @@ export function HomeHero() {
 
           <div className="flex flex-wrap items-center gap-3">
             <Link
-              href="/employees"
+              href="/services"
               className="inline-flex h-9 items-center justify-center rounded-lg border border-transparent bg-primary px-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/80"
             >
               Browse Services

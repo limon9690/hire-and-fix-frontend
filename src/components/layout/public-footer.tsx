@@ -23,7 +23,7 @@ export function PublicFooter() {
               <Link href="/" className="hover:text-foreground">
                 Home
               </Link>
-              <Link href="/employees" className="hover:text-foreground">
+              <Link href="/services" className="hover:text-foreground">
                 Browse Services
               </Link>
               <Link href="/vendors" className="hover:text-foreground">
