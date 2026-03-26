@@ -1,10 +1,10 @@
 import { ListFiltersBar } from "@/components/shared/list/list-filters-bar";
 import { ListPagination } from "@/components/shared/list/list-pagination";
+import { EmployeeBookingsList } from "@/components/dashboard/bookings/employee-bookings-list";
 import type { BookingSortBy } from "@/lib/dashboard/booking-types";
-import { VendorBookingsList } from "@/components/dashboard/bookings/vendor-bookings-list";
-import { getVendorBookings } from "@/lib/dashboard/vendor-bookings";
+import { getEmployeeBookings } from "@/lib/dashboard/employee-bookings";
 
-type VendorBookingsPageProps = {
+type EmployeeBookingsPageProps = {
   searchParams: Promise<{
     bookingStatus?: string;
     paymentStatus?: string;
@@ -31,7 +31,6 @@ const parseSortBy = (value: string | undefined): BookingSortBy => {
   ) {
     return value;
   }
-
   return "createdAt";
 };
 
@@ -39,16 +38,17 @@ const parseSortOrder = (value: string | undefined): "asc" | "desc" => {
   return value === "asc" ? "asc" : "desc";
 };
 
-export default async function VendorBookingsPage({
+export default async function EmployeeBookingsPage({
   searchParams,
-}: VendorBookingsPageProps) {
+}: EmployeeBookingsPageProps) {
   const params = await searchParams;
   const bookingStatus = params.bookingStatus ?? "";
   const paymentStatus = params.paymentStatus ?? "";
   const sortBy = parseSortBy(params.sortBy);
   const sortOrder = parseSortOrder(params.sortOrder);
   const page = parsePage(params.page);
-  const { data, meta, error } = await getVendorBookings({
+
+  const { data, meta, error } = await getEmployeeBookings({
     bookingStatus,
     paymentStatus,
     sortBy,
@@ -60,17 +60,17 @@ export default async function VendorBookingsPage({
   return (
     <section className="space-y-6">
       <div className="space-y-1">
-        <h2 className="text-2xl font-semibold tracking-tight">Manage Bookings</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">Assigned Bookings</h2>
         <p className="text-sm text-muted-foreground">
-          Review customer bookings and prepare status updates.
+          Track bookings assigned to you and review service timelines.
         </p>
       </div>
 
       <div className="overflow-x-auto">
         <div className="min-w-[900px]">
           <ListFiltersBar
-            action="/dashboard/vendor/bookings"
-            resetHref="/dashboard/vendor/bookings"
+            action="/dashboard/employee/bookings"
+            resetHref="/dashboard/employee/bookings"
             submitLabel="Apply"
             hiddenFields={[{ name: "page", value: "1" }]}
             selectFields={[
@@ -132,7 +132,7 @@ export default async function VendorBookingsPage({
         </div>
       ) : null}
 
-      {!error ? <VendorBookingsList bookings={data} /> : null}
+      {!error ? <EmployeeBookingsList bookings={data} /> : null}
 
       {!error ? (
         <>
@@ -142,7 +142,7 @@ export default async function VendorBookingsPage({
           <ListPagination
             page={meta.page}
             totalPages={meta.totalPages}
-            basePath="/dashboard/vendor/bookings"
+            basePath="/dashboard/employee/bookings"
             preservedParams={{
               bookingStatus,
               paymentStatus,
