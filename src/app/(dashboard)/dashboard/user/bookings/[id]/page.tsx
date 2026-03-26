@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { UserBookingDetails } from "@/components/dashboard/bookings/user-booking-details";
 import { getUserBookingDetails } from "@/lib/dashboard/user-booking-details";
@@ -19,13 +18,6 @@ export default async function UserBookingDetailsPage({
 
   return (
     <div className="space-y-6">
-      <Link
-        href="/dashboard/user/bookings"
-        className="inline-flex h-8 items-center rounded-lg border border-border bg-background px-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
-      >
-        Back to bookings
-      </Link>
-
       {error ? (
         <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive">
           {error}

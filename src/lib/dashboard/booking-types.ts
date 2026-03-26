@@ -31,6 +31,12 @@ export type MyBookingItem = {
   paymentStatus: PaymentStatus;
   createdAt: string;
   updatedAt: string;
+  user?: {
+    id: string;
+    name: string;
+    email: string;
+    role: string;
+  };
   vendor: {
     id: string;
     vendorName: string;

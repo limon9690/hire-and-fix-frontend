@@ -1,14 +1,13 @@
 import Link from "next/link";
-import { canPayForBooking } from "@/lib/dashboard/booking-rules";
-import type { BookingDetails } from "@/lib/dashboard/user-booking-details";
+import type { VendorBookingDetails } from "@/lib/dashboard/vendor-booking-details";
 import {
   BookingStatusBadge,
   PaymentStatusBadge,
 } from "./booking-status-badge";
-import { CancelBookingButton } from "./cancel-booking-button";
+import { BookingStatusUpdateControl } from "./booking-status-update-control";
 
-type UserBookingDetailsProps = {
-  booking: BookingDetails;
+type VendorBookingDetailsProps = {
+  booking: VendorBookingDetails;
 };
 
 const formatDateTime = (value: string | null | undefined) => {
@@ -42,15 +41,14 @@ const formatCurrency = (value: string) => {
   }).format(numeric);
 };
 
-export function UserBookingDetails({ booking }: UserBookingDetailsProps) {
+export function VendorBookingDetailsView({ booking }: VendorBookingDetailsProps) {
   const paymentStatus = booking.payment?.status ?? booking.paymentStatus;
-  const canPayNow = canPayForBooking(booking);
 
   return (
     <section className="space-y-6">
       <div className="space-y-3">
         <Link
-          href="/dashboard/user/bookings"
+          href="/dashboard/vendor/bookings"
           className="inline-flex h-8 items-center justify-center rounded-lg border border-border bg-background px-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
         >
           Back to bookings
@@ -127,7 +125,7 @@ export function UserBookingDetails({ booking }: UserBookingDetailsProps) {
                 <dd className="font-medium">{booking.serviceAddress || "—"}</dd>
               </div>
               <div className="sm:col-span-2">
-                <dt className="text-xs text-muted-foreground">Your Note</dt>
+                <dt className="text-xs text-muted-foreground">Customer Note</dt>
                 <dd className="font-medium">{booking.note || "—"}</dd>
               </div>
             </dl>
@@ -138,6 +136,14 @@ export function UserBookingDetails({ booking }: UserBookingDetailsProps) {
               People
             </h3>
             <dl className="mt-3 grid gap-3 text-sm sm:grid-cols-2">
+              <div>
+                <dt className="text-xs text-muted-foreground">Customer Name</dt>
+                <dd className="font-medium">{booking.user?.name || "—"}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-muted-foreground">Customer Email</dt>
+                <dd className="font-medium break-all">{booking.user?.email || "—"}</dd>
+              </div>
               <div>
                 <dt className="text-xs text-muted-foreground">Employee Name</dt>
                 <dd className="font-medium">{booking.employee.user.name}</dd>
@@ -163,16 +169,11 @@ export function UserBookingDetails({ booking }: UserBookingDetailsProps) {
             <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
               Actions
             </h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              <CancelBookingButton bookingId={booking.id} />
-              {canPayNow ? (
-                <Link
-                  href={`/checkout/${booking.id}`}
-                  className="inline-flex h-10 items-center justify-center rounded-lg border border-transparent bg-primary px-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  Pay Now
-                </Link>
-              ) : null}
+            <div className="mt-3">
+              <BookingStatusUpdateControl
+                bookingId={booking.id}
+                currentStatus={booking.bookingStatus}
+              />
             </div>
           </article>
 
@@ -204,7 +205,7 @@ export function UserBookingDetails({ booking }: UserBookingDetailsProps) {
               <div>
                 <dt className="text-xs text-muted-foreground">Paid At</dt>
                 <dd className="font-medium">
-                  {formatDateTime(booking.payment?.paidAt)}
+                  {formatDateTime(booking.payment?.paidAt ?? null)}
                 </dd>
               </div>
             </dl>
