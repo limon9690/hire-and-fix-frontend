@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { canPayForBooking } from "@/lib/dashboard/booking-rules";
 import type { MyBookingItem } from "@/lib/dashboard/booking-types";
+import { PayNowButton } from "@/components/payments/pay-now-button";
 import {
   BookingStatusBadge,
   PaymentStatusBadge,
@@ -53,9 +54,20 @@ export function UserBookingCard({ booking }: UserBookingCardProps) {
             {booking.employee.serviceCategory.name} • {booking.vendor.vendorName}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <BookingStatusBadge status={booking.bookingStatus} />
-          <PaymentStatusBadge status={paymentStatus} />
+
+        <div className="grid gap-2 sm:grid-cols-2">
+          <div className="min-w-[140px]">
+            <p className="mb-1 text-[11px] uppercase tracking-wide text-muted-foreground">
+              Booking Status
+            </p>
+            <BookingStatusBadge status={booking.bookingStatus} />
+          </div>
+          <div className="min-w-[140px]">
+            <p className="mb-1 text-[11px] uppercase tracking-wide text-muted-foreground">
+              Payment Status
+            </p>
+            <PaymentStatusBadge status={paymentStatus} />
+          </div>
         </div>
       </div>
 
@@ -91,12 +103,10 @@ export function UserBookingCard({ booking }: UserBookingCardProps) {
         <CancelBookingButton bookingId={booking.id} />
 
         {canPayNow ? (
-          <Link
-            href={`/checkout/${booking.id}`}
-            className="inline-flex h-8 cursor-pointer items-center justify-center rounded-lg border border-transparent bg-primary px-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Pay Now
-          </Link>
+          <PayNowButton
+            bookingId={booking.id}
+            className="h-8 cursor-pointer rounded-lg px-3 text-sm font-medium"
+          />
         ) : null}
       </div>
     </article>

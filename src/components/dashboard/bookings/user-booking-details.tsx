@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { canPayForBooking } from "@/lib/dashboard/booking-rules";
 import type { BookingDetails } from "@/lib/dashboard/user-booking-details";
+import { PayNowButton } from "@/components/payments/pay-now-button";
 import {
   BookingStatusBadge,
   PaymentStatusBadge,
@@ -166,12 +167,10 @@ export function UserBookingDetails({ booking }: UserBookingDetailsProps) {
             <div className="mt-3 flex flex-wrap gap-2">
               <CancelBookingButton bookingId={booking.id} />
               {canPayNow ? (
-                <Link
-                  href={`/checkout/${booking.id}`}
-                  className="inline-flex h-10 items-center justify-center rounded-lg border border-transparent bg-primary px-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  Pay Now
-                </Link>
+                <PayNowButton
+                  bookingId={booking.id}
+                  className="h-10 cursor-pointer rounded-lg px-3 text-sm font-medium"
+                />
               ) : null}
             </div>
           </article>

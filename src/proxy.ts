@@ -15,7 +15,7 @@ export function proxy(request: NextRequest) {
     pathname === "/dashboard" ||
     pathname.startsWith("/dashboard/") ||
     pathname === "/bookings/new" ||
-    pathname.startsWith("/checkout/");
+    pathname.startsWith("/payment/");
 
   if (isProtectedRoute && !claims) {
     return NextResponse.redirect(new URL("/login", request.url));
@@ -25,6 +25,14 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(
       new URL(getDashboardPathByRole(claims.role), request.url)
     );
+  }
+
+  if (
+    claims &&
+    (pathname === "/bookings/new" || pathname.startsWith("/payment/")) &&
+    claims.role !== "USER"
+  ) {
+    return NextResponse.redirect(new URL("/unauthorized", request.url));
   }
 
   if (claims && pathname.startsWith("/dashboard/")) {
@@ -58,6 +66,6 @@ export const config = {
     "/dashboard",
     "/dashboard/:path*",
     "/bookings/new",
-    "/checkout/:path*",
+    "/payment/:path*",
   ],
 };
