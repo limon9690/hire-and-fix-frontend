@@ -2,6 +2,8 @@ import Link from "next/link";
 import { canPayForBooking } from "@/lib/dashboard/booking-rules";
 import type { BookingDetails } from "@/lib/dashboard/user-booking-details";
 import { PayNowButton } from "@/components/payments/pay-now-button";
+import { CreateReviewModal } from "@/components/dashboard/reviews/create-review-modal";
+import { UpdateReviewModal } from "@/components/dashboard/reviews/update-review-modal";
 import {
   BookingStatusBadge,
   PaymentStatusBadge,
@@ -46,6 +48,8 @@ const formatCurrency = (value: string) => {
 export function UserBookingDetails({ booking }: UserBookingDetailsProps) {
   const paymentStatus = booking.payment?.status ?? booking.paymentStatus;
   const canPayNow = canPayForBooking(booking);
+  const canCreateReview = booking.bookingStatus === "COMPLETED" && !booking.review;
+  const canUpdateReview = booking.bookingStatus === "COMPLETED" && Boolean(booking.review);
 
   return (
     <section className="space-y-6">
@@ -170,6 +174,20 @@ export function UserBookingDetails({ booking }: UserBookingDetailsProps) {
                 <PayNowButton
                   bookingId={booking.id}
                   className="h-10 cursor-pointer rounded-lg px-3 text-sm font-medium"
+                />
+              ) : null}
+              {canCreateReview ? (
+                <CreateReviewModal
+                  bookingId={booking.id}
+                  employeeName={booking.employee.user.name}
+                />
+              ) : null}
+              {canUpdateReview && booking.review ? (
+                <UpdateReviewModal
+                  reviewId={booking.review.id}
+                  employeeName={booking.employee.user.name}
+                  initialRating={booking.review.rating}
+                  initialComment={booking.review.comment}
                 />
               ) : null}
             </div>

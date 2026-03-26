@@ -17,6 +17,14 @@ export type PaymentStatus =
 
 export type BookingSortBy = "createdAt" | "startTime" | "endTime" | "totalPrice";
 
+export type BookingReview = {
+  id: string;
+  rating: number;
+  comment: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type MyBookingItem = {
   id: string;
   userId: string;
@@ -84,5 +92,5 @@ export type MyBookingItem = {
     createdAt: string;
     updatedAt: string;
   } | null;
-  review: unknown | null;
+  review: BookingReview | null;
 };

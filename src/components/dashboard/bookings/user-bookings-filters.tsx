@@ -14,10 +14,8 @@ const BOOKING_STATUS_OPTIONS = [
 const PAYMENT_STATUS_OPTIONS = [
   { value: "", label: "All payment statuses" },
   { value: "PENDING", label: "Pending" },
-  { value: "UNPAID", label: "Unpaid" },
-  { value: "PAID", label: "Paid" },
+  { value: "SUCCESSFUL", label: "Successful" },
   { value: "FAILED", label: "Failed" },
-  { value: "REFUNDED", label: "Refunded" },
 ];
 
 const SORT_BY_OPTIONS: Array<{ value: BookingSortBy; label: string }> = [

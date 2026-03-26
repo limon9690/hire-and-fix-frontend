@@ -95,10 +95,8 @@ export default async function EmployeeBookingsPage({
                 options: [
                   { value: "", label: "All statuses" },
                   { value: "PENDING", label: "Pending" },
-                  { value: "UNPAID", label: "Unpaid" },
-                  { value: "PAID", label: "Paid" },
+                  { value: "SUCCESSFUL", label: "Successful" },
                   { value: "FAILED", label: "Failed" },
-                  { value: "REFUNDED", label: "Refunded" },
                 ],
               },
               {
