@@ -1,33 +1,9 @@
 import { apiFetch } from "@/lib/api/client";
-import type { Role } from "@/lib/auth/roles";
 import {
   getSessionAuthHeader,
   SESSION_EXPIRED_MESSAGE,
 } from "@/lib/server/session-auth";
-import type {
-  UserBaseInfo,
-  UserProfile,
-  VendorProfile,
-  EmployeeProfile,
-  RoleProfile,
-} from "@/types/domain/user";
-
-export type { UserProfile, VendorProfile, EmployeeProfile };
-
-type AuthMeResponse = UserBaseInfo & {
-  role: Role;
-  profile: RoleProfile;
-};
-
-export type BasicProfileInfo = Pick<
-  AuthMeResponse,
-  "id" | "name" | "email" | "role" | "createdAt" | "updatedAt"
->;
-
-export type DashboardProfileData = {
-  basic: BasicProfileInfo;
-  profile: RoleProfile;
-};
+import type { AuthMeResponse, DashboardProfileData } from "./types";
 
 export const getDashboardProfileData = async (): Promise<{
   data: DashboardProfileData | null;

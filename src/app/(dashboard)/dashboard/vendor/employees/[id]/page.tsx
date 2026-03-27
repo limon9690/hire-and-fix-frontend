@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { VendorEmployeeDetailsView } from "@/components/dashboard/vendor-employees/vendor-employee-details";
-import { getVendorEmployeeDetails } from "@/lib/dashboard/vendor/employees";
+import { getVendorEmployeeDetails } from "@/lib/dashboard/vendor/employees/details";
 
 type VendorEmployeeDetailsPageProps = {
   params: Promise<{ id: string }>;

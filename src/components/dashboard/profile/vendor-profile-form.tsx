@@ -15,7 +15,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { updateVendorProfileAction } from "@/lib/dashboard/profile/actions";
-import type { BasicProfileInfo, VendorProfile } from "@/lib/dashboard/profile";
+import type {
+  BasicProfileInfo,
+  VendorProfile,
+} from "@/lib/dashboard/profile/types";
 import {
   vendorProfileUpdateSchema,
   type VendorProfileUpdatePayload,

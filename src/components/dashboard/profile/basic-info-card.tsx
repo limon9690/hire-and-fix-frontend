@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import type { BasicProfileInfo } from "@/lib/dashboard/profile";
+import type { BasicProfileInfo } from "@/lib/dashboard/profile/types";
 
 type BasicInfoCardProps = {
   profile: BasicProfileInfo;

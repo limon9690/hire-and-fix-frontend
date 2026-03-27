@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { updateEmployeeProfileAction } from "@/lib/dashboard/profile/actions";
-import type { EmployeeProfile } from "@/lib/dashboard/profile";
+import type { EmployeeProfile } from "@/lib/dashboard/profile/types";
 import {
   employeeProfileUpdateSchema,
   type EmployeeProfileUpdatePayload,

@@ -1,6 +1,6 @@
 import { BasicInfoCard } from "@/components/dashboard/profile/basic-info-card";
 import { RoleProfileSection } from "@/components/dashboard/profile/role-profile-section";
-import { getDashboardProfileData } from "@/lib/dashboard/profile";
+import { getDashboardProfileData } from "@/lib/dashboard/profile/profile";
 
 export default async function DashboardProfilePage() {
   const { data, error } = await getDashboardProfileData();

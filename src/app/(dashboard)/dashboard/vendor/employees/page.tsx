@@ -2,7 +2,7 @@ import Link from "next/link";
 import { VendorEmployeesFilters } from "@/components/dashboard/vendor-employees/vendor-employees-filters";
 import { VendorEmployeesList } from "@/components/dashboard/vendor-employees/vendor-employees-list";
 import { VendorEmployeesPagination } from "@/components/dashboard/vendor-employees/vendor-employees-pagination";
-import { getVendorEmployees } from "@/lib/dashboard/vendor/employees";
+import { getVendorEmployees } from "@/lib/dashboard/vendor/employees/list";
 import { getServiceCategories } from "@/lib/public/service-categories";
 
 type VendorEmployeesPageProps = {

@@ -1,4 +1,4 @@
-import type { DashboardProfileData } from "@/lib/dashboard/profile";
+import type { DashboardProfileData } from "@/lib/dashboard/profile/types";
 import { EmployeeProfileForm } from "./employee-profile-form";
 import { VendorProfileForm } from "./vendor-profile-form";
 
