@@ -1,37 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hire & Fix Frontend
 
-## Getting Started
+A role-based home services booking platform frontend built with Next.js.  
+Users can discover professionals, create bookings, complete payments, and manage activity through role-specific dashboards (User, Vendor, Employee, Admin).
 
-First, run the development server:
+## Live URLs
+
+- Frontend: `https://hire-and-fix-frontend.vercel.app`
+- Backend API: `https://hire-and-fix-backend.vercel.app`
+
+## Features
+
+- Public marketplace:
+  - Home page with featured sections
+  - Browse services/professionals
+  - Vendor profile pages
+  - Employee profile pages
+- Authentication:
+  - User login/logout
+  - User and vendor registration
+  - Cookie-based session flow
+- Booking flow:
+  - Create booking (user)
+  - Booking status tracking
+  - Cancel booking (with validation and confirmation)
+- Payment flow:
+  - Stripe checkout session integration
+  - Success/cancel handling pages
+- Reviews:
+  - Create and update reviews for completed bookings
+- Role-based dashboards:
+  - User: bookings, profile, reviews
+  - Vendor: summary, employees CRUD, booking management
+  - Employee: assigned bookings and status updates
+  - Admin: users/vendors/bookings/payments/categories management
+- Shared UX patterns:
+  - Search / sort / filters
+  - Pagination
+  - Loading / empty / error states
+  - Toast feedback and confirmation dialogs
+  - Dark/light/system theme support
+
+## Technologies Used
+
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+- shadcn/ui
+- react-hook-form
+- zod
+- sonner
+- next-themes
+
+## Setup Instructions
+
+### 1. Clone repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd hire-and-fix-frontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Configure environment variables
 
-## Learn More
+Create `.env.local` (or `.env`) in project root:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_API_URL=https://your_backend_url
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Run development server
 
-## Deploy on Vercel
+```bash
+pnpm dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open: `http://localhost:3000`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# hire-and-fix-frontend
+### 5. Build for production
+
+```bash
+pnpm build
+pnpm start
+```
+
+## Scripts
+
+- `pnpm dev` - start dev server
+- `pnpm build` - build production app
+- `pnpm start` - run production server
+- `pnpm lint` - run lint checks
+- `pnpm typecheck` - run TypeScript checks (if configured)
+
+## Notes
+
+- Backend is deployed separately on Vercel.
+- Cookie/session behavior depends on backend cookie config and matching frontend domain in production.
+- Stripe payment final status is updated through backend webhook handling.
