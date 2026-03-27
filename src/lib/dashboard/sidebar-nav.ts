@@ -23,7 +23,7 @@ const roleSidebarNavItems: Record<Role, SidebarNavItem[]> = {
   EMPLOYEE: [{ href: "/dashboard/employee/bookings", label: "Assigned Bookings" }],
   ADMIN: [
     { href: "/dashboard/admin", label: "Dashboard Summary" },
-    { href: "/dashboard/admin/users", label: "Users" },
+    { href: "/dashboard/admin/users", label: "Manage Users" },
     { href: "/dashboard/admin/vendors", label: "Vendors" },
     { href: "/dashboard/admin/employees", label: "Employees" },
     { href: "/dashboard/admin/bookings", label: "Bookings" },
