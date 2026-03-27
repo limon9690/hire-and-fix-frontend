@@ -1,4 +1,4 @@
-import type { AdminDashboardSummary } from "@/lib/dashboard/admin-summary";
+import type { AdminDashboardSummary } from "@/lib/dashboard/admin/summary";
 
 type AdminSummaryCardsProps = {
   summary: AdminDashboardSummary;

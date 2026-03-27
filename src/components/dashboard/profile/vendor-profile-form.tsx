@@ -14,12 +14,12 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { updateVendorProfileAction } from "@/lib/dashboard/profile-actions";
+import { updateVendorProfileAction } from "@/lib/dashboard/profile/actions";
 import type { BasicProfileInfo, VendorProfile } from "@/lib/dashboard/profile";
 import {
   vendorProfileUpdateSchema,
   type VendorProfileUpdatePayload,
-} from "@/lib/dashboard/profile-schemas";
+} from "@/lib/dashboard/profile/schemas";
 
 type VendorProfileFormProps = {
   basic: BasicProfileInfo;

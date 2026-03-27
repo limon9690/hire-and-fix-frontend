@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PayNowButton } from "@/components/payments/pay-now-button";
-import { canPayForBooking } from "@/lib/dashboard/booking-rules";
-import { getUserBookingDetails } from "@/lib/dashboard/user-booking-details";
+import { canPayForBooking } from "@/lib/dashboard/booking/rules";
+import { getUserBookingDetails } from "@/lib/dashboard/user/bookings/user-booking-details";
 import { PaymentStatusBadge } from "@/components/dashboard/bookings/booking-status-badge";
 
 type CheckoutCancelPageProps = {

@@ -1,9 +1,8 @@
-import { cookies } from "next/headers";
 import { getSessionClaimsFromToken } from "@/lib/server/jwt";
+import { getSessionToken } from "@/lib/server/session-auth";
 
 export default async function DashboardEntryPage() {
-  const cookieStore = await cookies();
-  const sessionToken = cookieStore.get("session")?.value;
+  const sessionToken = await getSessionToken();
   const claims = sessionToken ? getSessionClaimsFromToken(sessionToken) : null;
 
   const displayName = claims?.email.split("@")[0] ?? "there";

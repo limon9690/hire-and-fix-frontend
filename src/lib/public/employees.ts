@@ -1,70 +1,14 @@
 import { apiFetch, apiFetchWithMeta } from "@/lib/api/client";
 import { ApiError } from "@/lib/api/types";
+import type {
+  EmployeeCard,
+  EmployeeDetails,
+  EmployeeReviewItem,
+  EmployeeReviews,
+} from "@/types/domain/employee";
 
-export type EmployeeCardItem = {
-  id: string;
-  profilePhoto: string | null;
-  hourlyRate: string | null;
-  experienceYears: number | null;
-  user: {
-    name: string | null;
-  } | null;
-  vendor: {
-    vendorName: string | null;
-  } | null;
-  serviceCategory: {
-    name: string | null;
-  } | null;
-};
-
-export type EmployeeDetails = {
-  id: string;
-  profilePhoto: string | null;
-  bio: string | null;
-  address: string | null;
-  phone: string | null;
-  hourlyRate: string | null;
-  experienceYears: number | null;
-  isActive: boolean;
-  user: {
-    id: string;
-    name: string | null;
-    email: string;
-    role: string;
-  } | null;
-  vendor: {
-    id: string;
-    vendorName: string | null;
-    logo: string | null;
-    phone: string | null;
-    address: string | null;
-    isApproved: boolean;
-    isActive: boolean;
-  } | null;
-  serviceCategory: {
-    id: string;
-    name: string | null;
-    description: string | null;
-  } | null;
-};
-
-export type EmployeeReviewItem = {
-  id: string;
-  rating: number;
-  comment: string | null;
-  createdAt: string;
-  user: {
-    id: string;
-    name: string | null;
-    role: string;
-  } | null;
-};
-
-export type EmployeeReviews = {
-  averageRating: number;
-  totalReviews: number;
-  reviews: EmployeeReviewItem[];
-};
+export type EmployeeCardItem = EmployeeCard;
+export type { EmployeeDetails, EmployeeReviewItem, EmployeeReviews };
 
 type EmployeesMeta = {
   page: number;

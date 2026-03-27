@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { deleteVendorEmployeeAction } from "@/lib/dashboard/vendor-employee-delete-actions";
+import { deleteVendorEmployeeAction } from "@/lib/dashboard/vendor/employees/delete-actions";
 
 type DeleteVendorEmployeeButtonProps = {
   employeeId: string;

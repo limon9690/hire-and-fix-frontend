@@ -1,7 +1,10 @@
 "use server";
 
-import { cookies } from "next/headers";
 import { apiFetch } from "@/lib/api/client";
+import {
+  getSessionAuthHeader,
+  SESSION_EXPIRED_MESSAGE,
+} from "@/lib/server/session-auth";
 import {
   createBookingSchema,
   type CreateBookingPayload,
@@ -38,12 +41,11 @@ export const createBookingAction = async (
     };
   }
 
-  const cookieStore = await cookies();
-  const sessionToken = cookieStore.get("session")?.value;
-  if (!sessionToken) {
+  const authHeader = await getSessionAuthHeader();
+  if (!authHeader) {
     return {
       success: false,
-      message: "Session expired. Please log in again.",
+      message: SESSION_EXPIRED_MESSAGE,
     };
   }
 
@@ -52,9 +54,7 @@ export const createBookingAction = async (
   try {
     const created = await apiFetch<{ id?: string }>("/bookings", {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${sessionToken}`,
-      },
+      headers: authHeader,
       body: {
         employeeId,
         startTime: toIsoWithOffset(date, startTime),

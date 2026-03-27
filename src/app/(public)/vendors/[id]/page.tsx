@@ -153,7 +153,7 @@ export default async function VendorDetailsPage({ params }: VendorDetailsPagePro
           </CardHeader>
           <CardContent className="space-y-3">
             <p className="text-sm text-muted-foreground">
-              Reach out to discuss services, schedule, and availability by phone or email.
+              Explore professionals from this company and continue with booking from the services page.
             </p>
             <Link
               href="/services"

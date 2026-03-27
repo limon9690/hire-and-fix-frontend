@@ -1,8 +1,8 @@
 import { ListFiltersBar } from "@/components/shared/list/list-filters-bar";
 import { ListPagination } from "@/components/shared/list/list-pagination";
-import { EmployeeBookingsList } from "@/components/dashboard/bookings/employee-bookings-list";
-import type { BookingSortBy } from "@/lib/dashboard/booking-types";
-import { getEmployeeBookings } from "@/lib/dashboard/employee-bookings";
+import { EmployeeBookingsList } from "@/components/dashboard/employee/bookings/employee-bookings-list";
+import type { BookingSortBy } from "@/lib/dashboard/booking/types";
+import { getEmployeeBookings } from "@/lib/dashboard/employee/bookings/employee-bookings";
 
 type EmployeeBookingsPageProps = {
   searchParams: Promise<{

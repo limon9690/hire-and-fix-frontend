@@ -1,4 +1,4 @@
-import type { VendorDashboardSummary } from "@/lib/dashboard/vendor-summary";
+import type { VendorDashboardSummary } from "@/lib/dashboard/vendor/summary";
 
 type VendorSummaryCardsProps = {
   summary: VendorDashboardSummary;

@@ -1,7 +1,7 @@
 import { ListFiltersBar } from "@/components/shared/list/list-filters-bar";
 import { ListPagination } from "@/components/shared/list/list-pagination";
-import { AdminBookingsList } from "@/components/dashboard/admin/admin-bookings-list";
-import { getAdminBookings } from "@/lib/dashboard/admin-bookings";
+import { AdminBookingsList } from "@/components/dashboard/admin/bookings/admin-bookings-list";
+import { getAdminBookings } from "@/lib/dashboard/admin/bookings/admin-bookings";
 
 type AdminBookingsPageProps = {
   searchParams: Promise<{

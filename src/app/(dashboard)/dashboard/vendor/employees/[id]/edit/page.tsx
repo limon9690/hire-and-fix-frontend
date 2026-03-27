@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { VendorEmployeeEditForm } from "@/components/dashboard/vendor-employees/vendor-employee-edit-form";
-import { getVendorEmployeeDetails } from "@/lib/dashboard/vendor-employee-details";
+import { getVendorEmployeeDetails } from "@/lib/dashboard/vendor/employees";
 import { getServiceCategories } from "@/lib/public/service-categories";
 
 type VendorEmployeeEditPageProps = {

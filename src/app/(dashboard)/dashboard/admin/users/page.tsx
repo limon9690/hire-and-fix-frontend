@@ -1,7 +1,7 @@
 import { ListFiltersBar } from "@/components/shared/list/list-filters-bar";
 import { ListPagination } from "@/components/shared/list/list-pagination";
-import { AdminUsersList } from "@/components/dashboard/admin/admin-users-list";
-import { getAdminUsers } from "@/lib/dashboard/admin-users";
+import { AdminUsersList } from "@/components/dashboard/admin/users/admin-users-list";
+import { getAdminUsers } from "@/lib/dashboard/admin/users/admin-users";
 
 type AdminUsersPageProps = {
   searchParams: Promise<{

@@ -1,21 +1,20 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { ModeToggle } from "@/components/mode-toggle";
 import { logoutAction } from "@/lib/auth/logout-action";
 import { getSessionClaimsFromToken } from "@/lib/server/jwt";
+import { getSessionToken } from "@/lib/server/session-auth";
 import {
   dashboardGeneralNavItems,
   getRoleSidebarNavItems,
-} from "@/lib/dashboard/sidebar-nav";
+} from "@/lib/dashboard/navigation";
 
 export default async function DashboardLayout({
   children,
 }: {
   children: ReactNode;
 }) {
-  const cookieStore = await cookies();
-  const sessionToken = cookieStore.get("session")?.value;
+  const sessionToken = await getSessionToken();
   const claims = sessionToken ? getSessionClaimsFromToken(sessionToken) : null;
   const roleNavItems = getRoleSidebarNavItems(claims?.role);
   const globalItems = [

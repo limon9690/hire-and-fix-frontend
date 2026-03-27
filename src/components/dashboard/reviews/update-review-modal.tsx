@@ -12,7 +12,7 @@ import { updateReviewAction } from "@/lib/reviews/update-review-action";
 import {
   updateReviewSchema,
   type UpdateReviewPayload,
-} from "@/lib/reviews/update-review-schema";
+} from "@/lib/reviews/schemas";
 
 type UpdateReviewModalProps = {
   reviewId: string;

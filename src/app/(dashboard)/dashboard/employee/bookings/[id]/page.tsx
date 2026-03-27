@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { EmployeeBookingDetailsView } from "@/components/dashboard/bookings/employee-booking-details";
-import { getEmployeeBookingDetails } from "@/lib/dashboard/employee-booking-details";
+import { EmployeeBookingDetailsView } from "@/components/dashboard/employee/bookings/employee-booking-details";
+import { getEmployeeBookingDetails } from "@/lib/dashboard/employee/bookings/employee-booking-details";
 
 type EmployeeBookingDetailsPageProps = {
   params: Promise<{ id: string }>;

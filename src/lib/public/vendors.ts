@@ -1,49 +1,9 @@
 import { apiFetch, apiFetchWithMeta } from "@/lib/api/client";
 import { ApiError } from "@/lib/api/types";
+import type { VendorCard, VendorDetails } from "@/types/domain/vendor";
 
-export type VendorCardItem = {
-  id: string;
-  vendorName: string;
-  logo: string | null;
-  phone: string | null;
-  description: string | null;
-  address: string | null;
-  isApproved: boolean;
-  isActive: boolean;
-  user: {
-    id: string;
-    name: string | null;
-    email: string;
-    role: string;
-  } | null;
-};
-
-export type VendorDetails = {
-  id: string;
-  userId: string;
-  vendorName: string;
-  logo: string | null;
-  phone: string | null;
-  description: string | null;
-  address: string | null;
-  isApproved: boolean;
-  isActive: boolean;
-  createdAt: string;
-  updatedAt: string;
-  user: {
-    id: string;
-    name: string | null;
-    email: string;
-    role: string;
-    createdAt: string;
-    updatedAt: string;
-  } | null;
-  reviewSummary: {
-    averageRating: number;
-    totalReviews: number;
-    employeeCount: number;
-  } | null;
-};
+export type VendorCardItem = VendorCard;
+export type { VendorDetails };
 
 type VendorsMeta = {
   page: number;

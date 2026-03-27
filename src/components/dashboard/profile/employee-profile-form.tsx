@@ -14,12 +14,12 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { updateEmployeeProfileAction } from "@/lib/dashboard/profile-actions";
+import { updateEmployeeProfileAction } from "@/lib/dashboard/profile/actions";
 import type { EmployeeProfile } from "@/lib/dashboard/profile";
 import {
   employeeProfileUpdateSchema,
   type EmployeeProfileUpdatePayload,
-} from "@/lib/dashboard/profile-schemas";
+} from "@/lib/dashboard/profile/schemas";
 
 type EmployeeProfileFormProps = {
   profile: EmployeeProfile | null;

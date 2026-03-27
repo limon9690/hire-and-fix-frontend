@@ -7,11 +7,11 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { createVendorEmployeeAction } from "@/lib/dashboard/vendor-employee-create-actions";
+import { createVendorEmployeeAction } from "@/lib/dashboard/vendor/employees/create-actions";
 import {
   vendorEmployeeCreateSchema,
   type VendorEmployeeCreatePayload,
-} from "@/lib/dashboard/vendor-employee-create-schemas";
+} from "@/lib/dashboard/vendor/employees/create-schemas";
 import type { ServiceCategory } from "@/lib/public/service-categories";
 
 type VendorEmployeeCreateFormProps = {

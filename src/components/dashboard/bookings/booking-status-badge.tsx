@@ -1,4 +1,4 @@
-import type { BookingStatus, PaymentStatus } from "@/lib/dashboard/booking-types";
+import type { BookingStatus, PaymentStatus } from "@/lib/dashboard/booking/types";
 
 type BadgeVariant = "neutral" | "success" | "warning" | "danger";
 

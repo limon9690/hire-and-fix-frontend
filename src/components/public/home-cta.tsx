@@ -8,9 +8,14 @@ const trustChips = [
 
 export function HomeCta() {
   return (
-    <section className="rounded-2xl border border-border bg-gradient-to-r from-muted/40 via-background to-muted/40 p-6 sm:p-8 lg:p-10">
+    <section className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-r from-muted/40 via-background to-muted/40 p-6 sm:p-8 lg:p-10">
+      <div className="pointer-events-none absolute left-6 top-0 h-px w-28 bg-gradient-to-r from-primary/40 via-primary/10 to-transparent" />
+
       <div className="grid items-center gap-6 lg:grid-cols-[1.35fr_1fr]">
         <div className="space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Next Step
+          </p>
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Need help at home this week?
           </h2>

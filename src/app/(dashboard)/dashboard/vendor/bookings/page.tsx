@@ -1,8 +1,8 @@
 import { ListFiltersBar } from "@/components/shared/list/list-filters-bar";
 import { ListPagination } from "@/components/shared/list/list-pagination";
-import type { BookingSortBy } from "@/lib/dashboard/booking-types";
-import { VendorBookingsList } from "@/components/dashboard/bookings/vendor-bookings-list";
-import { getVendorBookings } from "@/lib/dashboard/vendor-bookings";
+import type { BookingSortBy } from "@/lib/dashboard/booking/types";
+import { VendorBookingsList } from "@/components/dashboard/vendor/bookings/vendor-bookings-list";
+import { getVendorBookings } from "@/lib/dashboard/vendor/bookings/vendor-bookings";
 
 type VendorBookingsPageProps = {
   searchParams: Promise<{

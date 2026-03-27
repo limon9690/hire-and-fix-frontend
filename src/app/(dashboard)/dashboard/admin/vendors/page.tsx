@@ -1,7 +1,7 @@
 import { ListFiltersBar } from "@/components/shared/list/list-filters-bar";
 import { ListPagination } from "@/components/shared/list/list-pagination";
-import { AdminVendorsList } from "@/components/dashboard/admin/admin-vendors-list";
-import { getAdminVendors } from "@/lib/dashboard/admin-vendors";
+import { AdminVendorsList } from "@/components/dashboard/admin/vendors/admin-vendors-list";
+import { getAdminVendors } from "@/lib/dashboard/admin/vendors/admin-vendors";
 
 type AdminVendorsPageProps = {
   searchParams: Promise<{

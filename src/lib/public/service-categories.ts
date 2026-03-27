@@ -1,10 +1,7 @@
 import { apiFetch } from "@/lib/api/client";
+import type { ServiceCategory } from "@/types/domain/category";
 
-export type ServiceCategory = {
-  id: string;
-  name: string;
-  description: string | null;
-};
+export type { ServiceCategory } from "@/types/domain/category";
 
 type ServiceCategoriesResult =
   | { data: ServiceCategory[]; error: null }

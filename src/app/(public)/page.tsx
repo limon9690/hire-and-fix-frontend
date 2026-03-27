@@ -5,7 +5,7 @@ import { ServiceCategoriesSection } from "@/components/public/service-categories
 
 export default function HomePage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-10 md:space-y-12">
       <HomeHero />
       <ServiceCategoriesSection />
       <HowItWorksSection />

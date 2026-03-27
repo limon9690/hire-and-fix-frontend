@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { VendorEmployeeDetails } from "@/lib/dashboard/vendor-employee-details";
+import type { VendorEmployeeDetails } from "@/lib/dashboard/vendor/employees/types";
 import { DeleteVendorEmployeeButton } from "./delete-vendor-employee-button";
 
 type VendorEmployeeDetailsProps = {

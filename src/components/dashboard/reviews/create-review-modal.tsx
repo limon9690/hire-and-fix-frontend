@@ -12,7 +12,7 @@ import { createReviewAction } from "@/lib/reviews/create-review-action";
 import {
   createReviewSchema,
   type CreateReviewPayload,
-} from "@/lib/reviews/create-review-schema";
+} from "@/lib/reviews/schemas";
 
 type CreateReviewModalProps = {
   bookingId: string;

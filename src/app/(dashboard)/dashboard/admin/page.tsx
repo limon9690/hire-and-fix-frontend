@@ -1,5 +1,5 @@
 import { AdminSummaryCards } from "@/components/dashboard/admin/admin-summary-cards";
-import { getAdminDashboardSummary } from "@/lib/dashboard/admin-summary";
+import { getAdminDashboardSummary } from "@/lib/dashboard/admin/summary";
 
 export default async function AdminDashboardSummaryPage() {
   const { data, error } = await getAdminDashboardSummary();

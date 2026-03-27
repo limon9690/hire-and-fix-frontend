@@ -1,7 +1,7 @@
 import { ListFiltersBar } from "@/components/shared/list/list-filters-bar";
 import { ListPagination } from "@/components/shared/list/list-pagination";
-import { AdminPaymentsList } from "@/components/dashboard/admin/admin-payments-list";
-import { getAdminPayments } from "@/lib/dashboard/admin-payments";
+import { AdminPaymentsList } from "@/components/dashboard/admin/payments/admin-payments-list";
+import { getAdminPayments } from "@/lib/dashboard/admin/payments/admin-payments";
 
 type AdminPaymentsPageProps = {
   searchParams: Promise<{

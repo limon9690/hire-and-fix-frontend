@@ -1,11 +1,11 @@
 "use server";
 
-import { cookies } from "next/headers";
 import { apiFetch } from "@/lib/api/client";
+import { getSessionAuthHeader, SESSION_EXPIRED_MESSAGE } from "@/lib/server/session-auth";
 import {
   createReviewSchema,
   type CreateReviewPayload,
-} from "@/lib/reviews/create-review-schema";
+} from "@/lib/reviews/schemas";
 
 type CreateReviewActionResult = {
   success: boolean;
@@ -23,21 +23,18 @@ export const createReviewAction = async (
     };
   }
 
-  const cookieStore = await cookies();
-  const sessionToken = cookieStore.get("session")?.value;
-  if (!sessionToken) {
+  const authHeader = await getSessionAuthHeader();
+  if (!authHeader) {
     return {
       success: false,
-      message: "Session expired. Please log in again.",
+      message: SESSION_EXPIRED_MESSAGE,
     };
   }
 
   try {
     await apiFetch<unknown>("/reviews", {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${sessionToken}`,
-      },
+      headers: authHeader,
       body: {
         bookingId: parsed.data.bookingId,
         rating: parsed.data.rating,

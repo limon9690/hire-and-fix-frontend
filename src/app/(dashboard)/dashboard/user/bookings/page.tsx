@@ -1,8 +1,8 @@
-import { UserBookingsFilters } from "@/components/dashboard/bookings/user-bookings-filters";
-import { UserBookingsList } from "@/components/dashboard/bookings/user-bookings-list";
-import { UserBookingsPagination } from "@/components/dashboard/bookings/user-bookings-pagination";
-import type { BookingSortBy } from "@/lib/dashboard/booking-types";
-import { getUserBookings } from "@/lib/dashboard/user-bookings";
+import { UserBookingsFilters } from "@/components/dashboard/user/bookings/user-bookings-filters";
+import { UserBookingsList } from "@/components/dashboard/user/bookings/user-bookings-list";
+import { UserBookingsPagination } from "@/components/dashboard/user/bookings/user-bookings-pagination";
+import type { BookingSortBy } from "@/lib/dashboard/booking/types";
+import { getUserBookings } from "@/lib/dashboard/user/bookings/user-bookings";
 
 type UserBookingsPageProps = {
   searchParams: Promise<{

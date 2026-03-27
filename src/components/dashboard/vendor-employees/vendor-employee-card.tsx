@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { VendorEmployeeItem } from "@/lib/dashboard/vendor-employees";
+import type { VendorEmployeeItem } from "@/lib/dashboard/vendor/employees/types";
 import { DeleteVendorEmployeeButton } from "./delete-vendor-employee-button";
 
 type VendorEmployeeCardProps = {
@@ -21,7 +21,7 @@ const formatCurrency = (value: string) => {
 
 export function VendorEmployeeCard({ employee, onDeleted }: VendorEmployeeCardProps) {
   return (
-    <article className="rounded-xl border border-border bg-card p-4">
+    <article className="rounded-xl border border-border/90 bg-card p-4 shadow-sm transition-shadow hover:shadow-md">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="space-y-1">
           <h3 className="text-lg font-semibold tracking-tight">

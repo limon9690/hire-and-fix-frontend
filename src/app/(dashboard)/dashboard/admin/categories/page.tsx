@@ -1,8 +1,8 @@
 import { ListFiltersBar } from "@/components/shared/list/list-filters-bar";
 import { ListPagination } from "@/components/shared/list/list-pagination";
-import { AdminCategoryCreateDialog } from "@/components/dashboard/admin/admin-category-create-dialog";
-import { AdminCategoriesList } from "@/components/dashboard/admin/admin-categories-list";
-import { getAdminCategories } from "@/lib/dashboard/admin-categories";
+import { AdminCategoryCreateDialog } from "@/components/dashboard/admin/categories/admin-category-create-dialog";
+import { AdminCategoriesList } from "@/components/dashboard/admin/categories/admin-categories-list";
+import { getAdminCategories } from "@/lib/dashboard/admin/categories/admin-categories";
 
 type AdminCategoriesPageProps = {
   searchParams: Promise<{

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { AdminPaymentDetailsView } from "@/components/dashboard/admin/admin-payment-details";
-import { getAdminPaymentDetails } from "@/lib/dashboard/admin-payment-details";
+import { AdminPaymentDetailsView } from "@/components/dashboard/admin/payments/admin-payment-details";
+import { getAdminPaymentDetails } from "@/lib/dashboard/admin/payments/admin-payment-details";
 
 type AdminPaymentDetailsPageProps = {
   params: Promise<{ id: string }>;

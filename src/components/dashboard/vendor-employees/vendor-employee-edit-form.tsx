@@ -9,12 +9,12 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { updateVendorEmployeeAction } from "@/lib/dashboard/vendor-employee-actions";
+import { updateVendorEmployeeAction } from "@/lib/dashboard/vendor/employees/update-actions";
 import {
   vendorEmployeeEditSchema,
   type VendorEmployeeEditPayload,
-} from "@/lib/dashboard/vendor-employee-schemas";
-import type { VendorEmployeeDetails } from "@/lib/dashboard/vendor-employee-details";
+} from "@/lib/dashboard/vendor/employees/schemas";
+import type { VendorEmployeeDetails } from "@/lib/dashboard/vendor/employees/types";
 import type { ServiceCategory } from "@/lib/public/service-categories";
 
 type VendorEmployeeEditFormProps = {

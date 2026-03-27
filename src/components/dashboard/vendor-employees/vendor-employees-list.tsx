@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { VendorEmployeeItem } from "@/lib/dashboard/vendor-employees";
+import type { VendorEmployeeItem } from "@/lib/dashboard/vendor/employees/types";
 import { VendorEmployeeCard } from "./vendor-employee-card";
 
 type VendorEmployeesListProps = {
@@ -33,14 +33,16 @@ export function VendorEmployeesList({ employees }: VendorEmployeesListProps) {
   }
 
   return (
-    <div className="space-y-4">
-      {visibleEmployees.map((employee) => (
-        <VendorEmployeeCard
-          key={employee.id}
-          employee={employee}
-          onDeleted={handleDeleted}
-        />
-      ))}
+    <div className="rounded-xl bg-muted/20 p-2">
+      <div className="space-y-5">
+        {visibleEmployees.map((employee) => (
+          <VendorEmployeeCard
+            key={employee.id}
+            employee={employee}
+            onDeleted={handleDeleted}
+          />
+        ))}
+      </div>
     </div>
   );
 }

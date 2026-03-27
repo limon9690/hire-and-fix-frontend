@@ -1,5 +1,5 @@
 import { VendorSummaryCards } from "@/components/dashboard/vendor/vendor-summary-cards";
-import { getVendorDashboardSummary } from "@/lib/dashboard/vendor-summary";
+import { getVendorDashboardSummary } from "@/lib/dashboard/vendor/summary";
 
 export default async function VendorDashboardSummaryPage() {
   const { data, error } = await getVendorDashboardSummary();
