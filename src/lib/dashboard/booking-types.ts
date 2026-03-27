@@ -11,6 +11,7 @@ export type PaymentStatus =
   | "PENDING"
   | "UNPAID"
   | "PAID"
+  | "SUCCESSFUL"
   | "FAILED"
   | "REFUNDED"
   | string;

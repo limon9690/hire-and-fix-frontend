@@ -36,6 +36,7 @@ const getBookingVariant = (status: BookingStatus): BadgeVariant => {
 const getPaymentVariant = (status: PaymentStatus): BadgeVariant => {
   switch (status) {
     case "PAID":
+    case "SUCCESSFUL":
       return "success";
     case "PENDING":
     case "UNPAID":
