@@ -5,13 +5,13 @@ const trustPoints = ["Verified vendors", "Secure payments", "Real reviews"];
 
 export function HomeHero() {
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-background via-background to-muted/40 px-5 py-10 sm:px-6 sm:py-14 lg:px-8">
+    <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-background via-background to-muted/40 px-5 py-10 sm:px-6 sm:py-14 lg:px-8">
       <div className="pointer-events-none absolute -right-12 -top-10 h-40 w-40 rounded-full bg-primary/10 blur-2xl" />
       <div className="pointer-events-none absolute -bottom-16 -left-10 h-44 w-44 rounded-full bg-primary/10 blur-3xl" />
 
       <div className="relative grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div className="space-y-6">
-          <div className="inline-flex items-center rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground">
+          <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
             Trusted home services platform
           </div>
 
@@ -60,28 +60,28 @@ export function HomeHero() {
             <CardTitle className="text-xl">AC Repair at Home</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-sm">
-            <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-lg border border-border bg-background p-3">
-                <p className="text-xs text-muted-foreground">Provider</p>
-                <p className="mt-1 font-medium">CoolAir Solutions</p>
+            <div className="divide-y divide-border">
+              <div className="flex items-center justify-between py-2.5">
+                <span className="text-xs text-muted-foreground">Provider</span>
+                <span className="font-medium">CoolAir Solutions</span>
               </div>
-              <div className="rounded-lg border border-border bg-background p-3">
-                <p className="text-xs text-muted-foreground">Date</p>
-                <p className="mt-1 font-medium">Mar 28, 10:00 AM</p>
+              <div className="flex items-center justify-between py-2.5">
+                <span className="text-xs text-muted-foreground">Date</span>
+                <span className="font-medium">Mar 28, 10:00 AM</span>
               </div>
-              <div className="rounded-lg border border-border bg-background p-3">
-                <p className="text-xs text-muted-foreground">Duration</p>
-                <p className="mt-1 font-medium">2 hours</p>
+              <div className="flex items-center justify-between py-2.5">
+                <span className="text-xs text-muted-foreground">Duration</span>
+                <span className="font-medium">2 hours</span>
               </div>
-              <div className="rounded-lg border border-border bg-background p-3">
-                <p className="text-xs text-muted-foreground">Total</p>
-                <p className="mt-1 font-medium">$85.00</p>
+              <div className="flex items-center justify-between py-2.5">
+                <span className="text-xs text-muted-foreground">Total</span>
+                <span className="font-medium text-primary">$85.00</span>
               </div>
             </div>
-            <div className="rounded-lg border border-dashed border-border bg-background p-3 text-xs text-muted-foreground">
+            <p className="text-xs text-muted-foreground">
               Real-time availability, instant confirmation, and secure payment
               from one dashboard.
-            </div>
+            </p>
           </CardContent>
         </Card>
       </div>

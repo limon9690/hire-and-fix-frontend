@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import {
   Card,
@@ -18,19 +21,22 @@ const getInitials = (name: string) => {
 };
 
 export function VendorCard({ vendor }: VendorCardProps) {
+  const [imgError, setImgError] = useState(false);
+
   const name = vendor.vendorName || "Vendor";
   const description = vendor.description || "No description available.";
 
   return (
-    <Card className="h-full border-border/80">
+    <Card className="h-full cursor-pointer hover:ring-primary/30">
       <CardHeader className="space-y-3">
         <div className="flex items-center gap-3">
-          {vendor.logo ? (
+          {vendor.logo && !imgError ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={vendor.logo}
               alt={name}
               className="h-20 w-20 rounded-2xl object-cover ring-1 ring-border"
+              onError={() => setImgError(true)}
             />
           ) : (
             <div className="inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 text-lg font-semibold text-primary ring-1 ring-border">
@@ -65,10 +71,10 @@ export function VendorCard({ vendor }: VendorCardProps) {
           </span>
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="border-0 bg-transparent">
         <Link
           href={`/vendors/${vendor.id}`}
-          className="inline-flex h-8 items-center justify-center rounded-lg border border-border bg-background px-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          className="inline-flex h-8 items-center justify-center rounded-lg bg-primary px-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
         >
           View details
         </Link>

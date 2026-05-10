@@ -43,12 +43,12 @@ const steps: Step[] = [
 
 export function HowItWorksSection() {
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-border bg-background p-5 sm:p-7 lg:p-8">
+    <section className="relative overflow-hidden rounded-2xl bg-background p-5 sm:p-7 lg:p-8">
       <div className="pointer-events-none absolute right-6 top-0 h-px w-24 bg-gradient-to-l from-primary/40 via-primary/10 to-transparent" />
 
       <div className="space-y-6">
         <div className="space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
             How It Works
           </p>
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">

@@ -6,13 +6,13 @@ export async function ServiceCategoriesSection() {
   const { data: categories, error } = await getServiceCategories();
 
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-border/70 bg-muted/30 p-5 sm:p-7 lg:p-8">
+    <section className="relative overflow-hidden rounded-2xl bg-muted/30 p-5 sm:p-7 lg:p-8">
       <div className="pointer-events-none absolute left-6 top-0 h-px w-24 bg-gradient-to-r from-primary/40 via-primary/10 to-transparent" />
 
       <div className="space-y-6">
         <div className="flex items-end justify-between gap-4">
           <div className="space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
               Popular Services
             </p>
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">

@@ -1,7 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Wrench, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/mode-toggle";
 import { logoutAction } from "@/lib/auth/logout-action";
 
@@ -21,6 +24,7 @@ export function PublicNavbarClient({
   dashboardHref,
 }: PublicNavbarClientProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleCloseMenu = () => setIsMenuOpen(false);
 
@@ -30,9 +34,10 @@ export function PublicNavbarClient({
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="text-lg font-semibold tracking-tight text-foreground"
+            className="flex items-center gap-1.5 text-lg font-semibold tracking-tight text-foreground"
             onClick={handleCloseMenu}
           >
+            <Wrench className="h-4 w-4 text-primary" aria-hidden="true" />
             Hire & Fix
           </Link>
 
@@ -41,7 +46,12 @@ export function PublicNavbarClient({
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-foreground",
+                  pathname === link.href
+                    ? "text-foreground border-b-2 border-primary pb-0.5"
+                    : "text-muted-foreground"
+                )}
               >
                 {link.label}
               </Link>
@@ -87,12 +97,17 @@ export function PublicNavbarClient({
 
           <button
             type="button"
-            className="rounded-md border border-border px-2.5 py-1.5 text-xs font-medium text-muted-foreground md:hidden"
+            className="inline-flex items-center justify-center rounded-md border border-border p-1.5 text-muted-foreground md:hidden"
             aria-expanded={isMenuOpen}
             aria-controls="public-mobile-menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
-            {isMenuOpen ? "Close" : "Menu"}
+            {isMenuOpen ? (
+              <X className="h-4 w-4" aria-hidden="true" />
+            ) : (
+              <Menu className="h-4 w-4" aria-hidden="true" />
+            )}
           </button>
         </div>
 
@@ -106,7 +121,12 @@ export function PublicNavbarClient({
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-md px-2 py-1.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  className={cn(
+                    "rounded-md px-2 py-1.5 text-sm font-medium hover:bg-muted hover:text-foreground",
+                    pathname === link.href
+                      ? "text-foreground bg-muted"
+                      : "text-muted-foreground"
+                  )}
                   onClick={handleCloseMenu}
                 >
                   {link.label}

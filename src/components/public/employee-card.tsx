@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import {
   Card,
@@ -18,6 +21,8 @@ const getInitials = (name: string) => {
 };
 
 export function EmployeeCard({ employee }: EmployeeCardProps) {
+  const [imgError, setImgError] = useState(false);
+
   const name = employee.user?.name || "Professional";
   const vendorName = employee.vendor?.vendorName || "Independent";
   const category = employee.serviceCategory?.name || "General Service";
@@ -28,15 +33,16 @@ export function EmployeeCard({ employee }: EmployeeCardProps) {
       : "Experience not listed";
 
   return (
-    <Card className="h-full border-border/80">
+    <Card className="h-full cursor-pointer hover:ring-primary/30">
       <CardHeader className="space-y-3">
         <div className="flex items-center gap-3">
-          {employee.profilePhoto ? (
+          {employee.profilePhoto && !imgError ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={employee.profilePhoto}
               alt={name}
               className="h-20 w-20 rounded-full object-cover ring-1 ring-border"
+              onError={() => setImgError(true)}
             />
           ) : (
             <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-lg font-semibold text-primary ring-1 ring-border">
@@ -60,10 +66,10 @@ export function EmployeeCard({ employee }: EmployeeCardProps) {
           <p className="text-muted-foreground">{experience}</p>
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="border-0 bg-transparent">
         <Link
           href={`/services/${employee.id}`}
-          className="inline-flex h-8 items-center justify-center rounded-lg border border-border bg-background px-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          className="inline-flex h-8 items-center justify-center rounded-lg bg-primary px-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
         >
           View details
         </Link>
